@@ -1,5 +1,5 @@
 def mergeSort(nlist):
-    print("Splitting ",nlist)
+    print("Splitting: ",nlist)
     # insert your code to complete the mergeSort function
     if len(nlist)>1:
         mid = len(nlist)//2
@@ -10,7 +10,7 @@ def mergeSort(nlist):
         mergeSort(righthalf)
         
         merge(nlist, lefthalf, righthalf)
-    print("Merging ",nlist)
+    print("Merging: ",nlist)
 
 def merge(nlist,lefthalf,righthalf):
     i=j=k=0       
@@ -38,4 +38,4 @@ nlist = [55, 31, 26, 20, 63, 7, 51, 74, 81, 40]
 
 mergeSort(nlist)
 
-print(nlist)
+print("Sorted List: ", nlist)
