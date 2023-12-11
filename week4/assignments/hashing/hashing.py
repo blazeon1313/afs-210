@@ -3,8 +3,8 @@ class HashTable:
         self.size = 10
         self.slots = [None] * self.size
         self.data = [None] * self.size
-#        self.updatedslots = [None] * self.size
-#        self.updateddata = [None] * self.size
+        self.updatedslots = [None] * self.size
+        self.updateddata = [None] * self.size
 
     def hashfunction(self, key):
         # Insert your hashing function code
@@ -44,38 +44,38 @@ class HashTable:
         self.put(key,data)
 
 # Challenge: Create a new secondary hash function using your own algorithm that avoids all collisions with this data set
-#    def newhashfunction(self, newkey):
-#        return newkey % self.size
+    def newhashfunction(self, newkey):
+       return newkey % self.size
 
-#    def updatedrehash(self, newkey):
-#       return 7 * newkey % 11
+    def updatedrehash(self, newkey):
+      return 7 * newkey % 11
 
-#    def newput(self, newkey, updateddata):
-#        newhashvalue = self.newhashfunction(newkey)
-#        if self.updateddata[newhashvalue] == None:
-#            self.updatedslots[newhashvalue] = newkey
-#            self.updateddata[newhashvalue] = updateddata
-#        else:
-#            if self.updatedslots[newhashvalue] == newkey:
-#                self.updateddata[newhashvalue] = updateddata
-#            else:
-#                updatednextslot = self.updatedrehash(newkey)
-#                if self.updateddata[updatednextslot] == None:
-#                    self.updateddata[updatednextslot] = updateddata
-#                    self.updatedslots[updatednextslot] = newkey
+    def newput(self, newkey, updateddata):
+       newhashvalue = self.newhashfunction(newkey)
+       if self.updateddata[newhashvalue] == None:
+           self.updatedslots[newhashvalue] = newkey
+           self.updateddata[newhashvalue] = updateddata
+       else:
+           if self.updatedslots[newhashvalue] == newkey:
+               self.updateddata[newhashvalue] = updateddata
+           else:
+               updatednextslot = self.updatedrehash(newkey)
+               if self.updateddata[updatednextslot] == None:
+                   self.updateddata[updatednextslot] = updateddata
+                   self.updatedslots[updatednextslot] = newkey
 
-#    def newget(self, newkey):
-#        updateddata = None
-#        updatedposition = self.newhashfunction(newkey)
-#        if self.updatedslots[updatedposition] == newkey:
-#            updateddata = self.updateddata[updatedposition]
-#        return updateddata
+    def newget(self, newkey):
+       updateddata = None
+       updatedposition = self.newhashfunction(newkey)
+       if self.updatedslots[updatedposition] == newkey:
+           updateddata = self.updateddata[updatedposition]
+       return updateddata
 
-#    def __getitem__ (self, newkey):
-#        return self.newget(newkey)
+    def __getitem__ (self, newkey):
+       return self.newget(newkey)
 
-#    def __setitem__ (self, newkey, updateddata):
-#        self.newput(newkey, updateddata)
+    def __setitem__ (self, newkey, updateddata):
+       self.newput(newkey, updateddata)
 
 H = HashTable()
 H[69] = 'A'
@@ -100,22 +100,26 @@ print("Value for key 52: ", H[52])
 
 # Output for challenge
 # Create the updated hash table
-#T = HashTable()
-#T[69] = 'A'
-#T[66] = 'B'
-#T[80] = 'C'
-#T[35] = 'D'
-#T[18] = 'E'
-#T[52] = 'F'
-#T[89] = 'G'
-#T[70] = 'H'
-#T[12] = 'I'
+T = HashTable()
+T[69] = 'A'
+T[66] = 'B'
+T[80] = 'C'
+T[35] = 'D'
+T[18] = 'E'
+T[52] = 'F'
+T[89] = 'G'
+T[70] = 'H'
+T[12] = 'I'
 
-# Store the original slot and data values for the updated table
+#Store the original slot and data values for the updated table
 
-# print updated Slots
-#print('Updated Slots: ', T.updatedslots)
+#print updated Slots
+print('Updated Slots: ', T.updatedslots)
 
-# print updated Data
-#print('Updated Data: ', T.updateddata)
+#print updated Data
+print('Updated Data: ', T.updateddata)
+
+
+
+
 
